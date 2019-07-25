@@ -59,6 +59,9 @@ public class Game {
         }
     }
 
+
+
+//    mai jos sunt metode pentru show all food si all activities, dar merg si cele curente foarte bine
 //    private void showAllFood() {
 //
 //        System.out.println("Here is all the available food: ");
