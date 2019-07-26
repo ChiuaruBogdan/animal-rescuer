@@ -50,11 +50,20 @@ public class Game {
         availableActivities[1] = fun;
     }
 
-    private void displayActivities() {
-        System.out.println("Available activities: ");
-        for (int i = 0; i < availableActivities.length; i++) {
-            if (availableActivities != null) {
-                System.out.println((i + 1) + ". " + availableActivities[i].getName());
+//    am comentat mai jos ca sa incerc u enhanced  for
+//    private void displayActivities() {
+//        System.out.println("Available activities: ");
+//        for (int i = 0; i < availableActivities.length; i++) {
+//            if (availableActivities != null) {
+//                System.out.println((i + 1) + ". " + availableActivities[i].getName());
+//            }
+//        }
+//    }
+
+    private void displayActivities(){
+        for(Activity activity: availableActivities){
+            if (availableActivities != null){
+                System.out.println("Available activities: " + activity.getName());
             }
         }
     }
