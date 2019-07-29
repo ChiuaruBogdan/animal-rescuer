@@ -1,12 +1,16 @@
 package org.fasttrackit;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Scanner;
 
 public class Game {
 
     Rescuer rescuer;
+    Pet pet;
     Dog dog;
+    Cat cat;
     Medic medic;
     private List<AnimalFood> availableFood = new ArrayList<>();
     private Activity[] availableActivities = new Activity[2];
@@ -17,7 +21,10 @@ public class Game {
         displayFood();
         initActivities();
         displayActivities();
-//        showAllFood();
+        initAnimal();
+        initRescuer();
+        nameAnimal();
+
     }
 
     private void initFood() {
@@ -50,46 +57,63 @@ public class Game {
         availableActivities[1] = fun;
     }
 
-//    am comentat mai jos ca sa incerc u enhanced  for
-//    private void displayActivities() {
-//        System.out.println("Available activities: ");
-//        for (int i = 0; i < availableActivities.length; i++) {
-//            if (availableActivities != null) {
-//                System.out.println((i + 1) + ". " + availableActivities[i].getName());
-//            }
-//        }
-//    }
 
-    private void displayActivities(){
-        for(Activity activity: availableActivities){
-            if (availableActivities != null){
+    private void displayActivities() {
+        for (Activity activity : availableActivities) {
+            if (availableActivities != null) {
                 System.out.println("Available activities: " + activity.getName());
             }
         }
     }
 
 
-
-//    mai jos sunt metode pentru show all food si all activities, dar merg si cele curente foarte bine
-//    private void showAllFood() {
-//
-//        System.out.println("Here is all the available food: ");
-//        for (int i = 0; i > availableFood.size(); i++) {
-//            if (availableFood != null) {
-//                System.out.println((i + 1) + " ." + availableFood.get(i).getName());
-//
-//            }
-//        }
-//    }
-
-//    private void showAllActivities(){
-////        System.out.println("Here are all the available activities: ");
-////        for(int i = 0; i > availableActivities.length; i++){
-////            if (availableActivities != null){
-////                System.out.println(availableActivities.);
-////            }
-////        }
+    private void initAnimal() {
+        System.out.println("Please pick an animal to rescue: (Dog or Cat)");
+        Dog dog = new Dog();
+        Cat cat = new Cat();
+        Scanner scanner = new Scanner(System.in);
+        String pickedAnimal = scanner.nextLine();
+        if (pickedAnimal.equals("dog")) {
+            System.out.println("You picked to rescue a: " + pickedAnimal);
+        } else {
+            if (pickedAnimal.equals("cat")) {
+                System.out.println("You picked to rescue a: " + pickedAnimal);
+            } else {
+                System.out.println("Please try to pick a dog or cat!");
+                initAnimal();
+            }
+        }
     }
+
+    private void initRescuer() {
+        System.out.println("Please pick a name for the rescuer.");
+        try {
+            Scanner scanner = new Scanner(System.in);
+            String rescuerName = scanner.nextLine();
+            System.out.println("You have selected: " + rescuerName);
+        } catch (InputMismatchException | ArrayIndexOutOfBoundsException e) {
+            System.out.println("You have entered an invalid name. Please try again");
+        }
+    }
+
+
+//    am introdus catch-try pentru nameAnimal fiindca imi dadea exceptie
+    private void nameAnimal(){
+        System.out.println("Please select a name for the animal");
+        try {
+            Scanner scanner = new Scanner(System.in);
+            String animalName = scanner.nextLine();
+            System.out.println("The name you have picked for your animal is " + pet.getName());
+        }catch(InputMismatchException | ArrayIndexOutOfBoundsException | java.lang.NullPointerException e){
+                    System.out.println("Please try selecting a name again.");
+                    nameAnimal();
+                }
+            }
+
+
+
+    }
+
 
 
 

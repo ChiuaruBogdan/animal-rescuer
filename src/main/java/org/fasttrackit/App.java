@@ -33,6 +33,15 @@ public class App {
         dog.setFavouriteFood("KFC");
         dog.setFavouriteActivity("playing");
 
+        Cat cat = new Cat();
+        cat.setName("Andreea");
+        cat.setBreed("Persana");
+        cat.setColor("Rosie");
+        cat.setHappinessLevel(6);
+        cat.setHungerLevel(5);
+        cat.setFavouriteActivity("Chilling");
+        cat.setFavouriteFood("Crispy Strips");
+
         Rescuer rescuer = new Rescuer();
         rescuer.setName("Batman");
         rescuer.setMoney(100);
@@ -84,6 +93,7 @@ public class App {
         game.dog = new Dog();
         game.medic = new Medic();
         game.rescuer = new Rescuer();
+        game.cat = new Cat();
         game.start();
 
 
@@ -100,16 +110,9 @@ public class App {
         animalToy.setPrice(3.5);
         animalToy.setType("Plastic");
 
-//        apelarea metodei feeding din clasa Rescuer
-        rescuer.feeding(pet, animalFood);
 
-//        apelarea metodei recreation
-        rescuer.recreation(pet, activity);
-//
-//
-////            apelarea metodei happinessLevel pentru Dog
-//
-//        dog.showHappinessLevel();
+
+        game.start();
 
     }
 }
