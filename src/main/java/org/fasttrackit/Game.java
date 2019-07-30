@@ -24,7 +24,7 @@ public class Game {
         initAnimal();
         initRescuer();
         nameAnimal();
-
+        requireFeeding();
     }
 
     private void initFood() {
@@ -97,22 +97,60 @@ public class Game {
     }
 
 
-//    am introdus catch-try pentru nameAnimal fiindca imi dadea exceptie
+    // M-am dat batut la metoda asta si am
+//    introdus una mai simpla jos
+
+//    private void nameAnimal() {
+//        System.out.println("Please select a name for the animal");
+//        try {
+//            Scanner scanner = new Scanner(System.in);
+//            String animalName = scanner.nextLine();
+//            dog.setName(animalName);
+//            cat.setName(animalName);
+//            if (animalName.equals("dog")) {
+//                System.out.println("The name you have selected for your dog is " + dog.getName());
+//            } else {
+//                System.out.println("The name you have selected for your cat is " + cat.getName());
+//            }
+//        } catch (InputMismatchException | ArrayIndexOutOfBoundsException | java.lang.NullPointerException e) {
+//            System.out.println("Please try selecting a name again.");
+//            nameAnimal();
+//        }
+//    }
+
+
     private void nameAnimal(){
-        System.out.println("Please select a name for the animal");
-        try {
-            Scanner scanner = new Scanner(System.in);
-            String animalName = scanner.nextLine();
-            System.out.println("The name you have picked for your animal is " + pet.getName());
-        }catch(InputMismatchException | ArrayIndexOutOfBoundsException | java.lang.NullPointerException e){
-                    System.out.println("Please try selecting a name again.");
-                    nameAnimal();
-                }
-            }
-
-
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please choose a name for your pet: ");
+        String animalName = scanner.next();
+        System.out.println("The name you have selected for your pet is : " + animalName);
 
     }
+
+    private void requireFeeding(){
+        System.out.println("Please pick a food type to feed your pet from the list or type in your favorite food.");
+
+        displayFood();
+        Scanner scanner = new Scanner(System.in);
+        String userInputFood = scanner.nextLine();
+
+            if (userInputFood.equals("Crenwurst")){
+                System.out.println("You have picked a delicious Crenwurst");
+            }
+            if (userInputFood.equals("Dominos")){
+                System.out.println("You have picked Pizza from Domnios");
+            }
+            else{
+                AnimalFood AnimalFood = new AnimalFood();
+                displayFood();
+                AnimalFood.setName(userInputFood);
+                availableFood.add(AnimalFood);
+                System.out.println("You have picked: " + userInputFood);
+            }
+        }
+    }
+
+
 
 
 
