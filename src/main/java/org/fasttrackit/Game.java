@@ -25,6 +25,7 @@ public class Game {
         initRescuer();
         nameAnimal();
         requireFeeding();
+        requireActivity();
     }
 
     private void initFood() {
@@ -148,7 +149,36 @@ public class Game {
                 System.out.println("You have picked: " + userInputFood);
             }
         }
-    }
+
+        private void requireActivity(){
+        displayActivities();
+            System.out.println("Please pick an activity to play with your pet.");
+            Scanner scanner = new Scanner(System.in);
+            String userInputActivity = scanner.nextLine();
+            try {
+                if (userInputActivity.equals("Alergare")) {
+                    System.out.println("You have picked to run with your pet.");
+                }
+                if (userInputActivity.equals("somn")) {
+                    System.out.println("You have picked to sleep and relax with your pet.");
+                } else {
+                    Activity activity = new Activity();
+                    displayActivities();
+                    activity.setName(userInputActivity);
+                    availableActivities[2] = new Activity();
+                    availableActivities[2] = activity;
+                    System.out.println("You will " + activity.getName() + "with your pet.");
+                }
+            }
+            catch (InputMismatchException | ArrayIndexOutOfBoundsException e) {
+                System.out.println("You have entered an invalid name. Please try again");
+                requireActivity();
+            }
+            }
+        }
+
+
+
 
 
 
