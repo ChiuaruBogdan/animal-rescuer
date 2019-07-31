@@ -16,6 +16,9 @@ public class Game {
     private Activity[] availableActivities = new Activity[2];
 
 
+
+
+
     public void start() throws Exception {
         initFood();
         displayFood();
@@ -24,8 +27,27 @@ public class Game {
         initAnimal();
         initRescuer();
         nameAnimal();
-        requireFeeding();
-        requireActivity();
+        newGame();
+    }
+
+
+    public void newGame(){
+        Pet pickedAnimal = new Pet();
+        pickedAnimal.setHungerLevel(0);
+        pickedAnimal.setHappinessLevel(0);
+        System.out.println("Feed the pet to make it happy!");
+        System.out.println("The pet's happiness level is " + pickedAnimal.getHappinessLevel() +
+                " and you need to play with it until the level reaches 10.");
+        System.out.println("The pet's hunger level is " + pickedAnimal.getHungerLevel() +
+                " and you need to play with it until the level reaches 9.");
+        while(pickedAnimal.happinessLevel <= 10 && pickedAnimal.hungerLevel <= 9){
+            requireFeeding();
+            requireActivity();
+
+            pickedAnimal.hungerLevel++;
+            pickedAnimal.happinessLevel++;
+        }
+        System.out.println("Good job! Your pet is now happy.");
     }
 
     private void initFood() {
@@ -99,7 +121,7 @@ public class Game {
 
 
     // M-am dat batut la metoda asta si am
-//    introdus una mai simpla jos
+//    introdus una mai simpla jos. desi mergea, nu mergea cum trebuie
 
 //    private void nameAnimal() {
 //        System.out.println("Please select a name for the animal");
